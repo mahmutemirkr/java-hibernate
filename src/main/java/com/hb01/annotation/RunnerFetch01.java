@@ -85,6 +85,15 @@ public class RunnerFetch01 {
         System.out.println("Alias with HQL");
         System.out.println(uniqueResultAlias);
 
+        /*DB operations with HQL - uniqueResult*/
+        //HQL - Alias Def. | Just name and ıd pull data -> where -> grade => 85
+
+        String hqlQueryAlias1 = "SELECT s.id, s.name FROM Student01 s WHERE s.grade=85";
+        List<Object[]> resultListUni = session.createQuery(hqlQueryAlias1).getResultList();
+        System.out.println("2-Alias with HQL");
+        for (Object[] objects:resultListUni){
+            System.out.println(Arrays.toString(objects));
+        }
 
 
         tx.commit();
