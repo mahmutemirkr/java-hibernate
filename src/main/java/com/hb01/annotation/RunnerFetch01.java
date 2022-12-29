@@ -46,6 +46,20 @@ public class RunnerFetch01 {
 
         }
 
+        /*DB operations with HQL*/
+        //HQL
+
+        String hqlQuery = "FROM Student01";
+        List<Student01> hqlResultList = session.createQuery(hqlQuery, Student01.class).getResultList();
+
+        System.out.println("-HQL-");
+        for (Student01 students : hqlResultList){
+
+            System.out.println(students);
+
+        }
+
+
 
 
         tx.commit();
