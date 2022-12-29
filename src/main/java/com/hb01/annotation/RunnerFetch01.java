@@ -77,6 +77,15 @@ public class RunnerFetch01 {
         System.out.println(uniqueResultHql);
 
 
+        /*DB operations with HQL - uniqueResult*/
+        //HQL - Alias Def.
+
+        String hqlQueryAlias = "FROM Student01 std WHERE std.name='Johnny Depp'";
+        Student01 uniqueResultAlias = session.createQuery(hqlQueryAlias, Student01.class).uniqueResult();
+        System.out.println("Alias with HQL");
+        System.out.println(uniqueResultAlias);
+
+
 
         tx.commit();
 
