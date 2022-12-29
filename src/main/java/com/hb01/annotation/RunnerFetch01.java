@@ -59,6 +59,13 @@ public class RunnerFetch01 {
 
         }
 
+        /*DB operations with SQL - uniqueResult*/
+        //SQL
+
+        String sqlQueryUnique = "SELECT * FROM e_student01 WHERE student_name='Brad Pitt'";
+        Object[] uniqueResult = (Object[]) session.createSQLQuery(sqlQueryUnique).uniqueResult();
+        System.out.println(Arrays.toString(uniqueResult));
+
 
 
 
