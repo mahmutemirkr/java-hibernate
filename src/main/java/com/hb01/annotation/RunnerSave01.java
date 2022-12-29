@@ -5,11 +5,21 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-public class RunnerSave01 extends Student01 {
+public class RunnerSave01{
 
     public static void main(String[] args) {
 
         Student01 student01 = new Student01(1000,"Johnny Depp",80);
+
+        Student01 student02 = new Student01();
+        student02.setId(1001);
+        student02.setName("Brad Pitt");
+        student02.setGrade(85);
+
+        Student01 student03 = new Student01();
+        student03.setId(1002);
+        student03.setName("Tom Hanks");
+        student03.setGrade(85);
 
         Configuration con = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Student01.class);
 
@@ -18,16 +28,14 @@ public class RunnerSave01 extends Student01 {
         Transaction tx = session.beginTransaction();
 
         session.save(student01);
+        session.save(student02);
+        session.save(student03);
 
         tx.commit();
 
         session.close();
         sf.close();
 
-
     }
-
-
-
 
 }
