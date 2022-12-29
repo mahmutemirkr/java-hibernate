@@ -64,8 +64,17 @@ public class RunnerFetch01 {
 
         String sqlQueryUnique = "SELECT * FROM e_student01 WHERE student_name='Brad Pitt'";
         Object[] uniqueResult = (Object[]) session.createSQLQuery(sqlQueryUnique).uniqueResult();
+        System.out.println("Unique SQL");
         System.out.println(Arrays.toString(uniqueResult));
 
+
+        /*DB operations with HQL - uniqueResult*/
+        //HQL
+
+        String hqlQueryUnique = "FROM Student01 WHERE name='Tom Hanks'";
+        Student01 uniqueResultHql = session.createQuery(hqlQueryUnique, Student01.class).uniqueResult();
+        System.out.println("Unique HQL");
+        System.out.println(uniqueResultHql);
 
 
 
