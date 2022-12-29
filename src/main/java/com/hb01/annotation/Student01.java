@@ -18,6 +18,16 @@ public class Student01 {
     /* @Lob //large object
     private byte[] image; */
 
+    public Student01(int id, String name, int grade) {
+        this.id = id;
+        this.name = name;
+        this.grade = grade;
+    }
+
+    public Student01() {
+
+    }
+
 
     //Getter and Setter
 
