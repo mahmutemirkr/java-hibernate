@@ -1,9 +1,9 @@
 package com.hb02.embeddable;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "e_student02")
 public class Student02 {
 
     @Id
