@@ -55,6 +55,14 @@ public class RunnerFetch04 {
         }
 
 
+        //Right Join
+        String hqlQueryRightJoin = "SELECT s.name, d.name FROM Student04 s RIGHT JOIN FETCH Diary04 d on s.id=d.student";
+        List<Object[]> resultListRightJoin = Config.session.createQuery(hqlQueryRightJoin).getResultList();
+        for (Object[] objects:resultListLeftJoin) {
+
+            System.out.println(Arrays.toString(objects));
+
+        }
 
 
 
