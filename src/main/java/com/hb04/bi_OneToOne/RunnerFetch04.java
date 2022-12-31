@@ -38,6 +38,12 @@ public class RunnerFetch04 {
 
         }
 
+        System.out.println("Lambda");
+
+        resultList.forEach(objects -> {
+            System.out.println(Arrays.toString(objects));
+        });
+
 
 
 
