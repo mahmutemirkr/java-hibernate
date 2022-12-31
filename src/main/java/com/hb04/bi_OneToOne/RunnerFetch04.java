@@ -73,11 +73,6 @@ public class RunnerFetch04 {
         });
 
 
-
-
-
-
-
         Config.configureClose();
 
 
