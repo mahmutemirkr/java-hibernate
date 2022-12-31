@@ -29,7 +29,6 @@ public class RunnerSave04 {
         diary1.setName("A diary");
         diary1.setStudent(student1);
 
-
         Diary04 diary2 = new Diary04();
         diary2.setId(102);
         diary2.setName("B diary");
@@ -49,9 +48,6 @@ public class RunnerSave04 {
 
         session.save(diary1);
         session.save(diary2);
-
-
-
 
         transaction.commit();
         session.close();
