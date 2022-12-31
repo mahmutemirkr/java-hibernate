@@ -64,6 +64,15 @@ public class RunnerFetch04 {
 
         }
 
+        //FullJoin
+        String hqlQuery4 =
+                "SELECT s.name,d.name FROM Student04 s FULL JOIN FETCH Diary04 d on s.id=d.student.id";
+        List<Object[]> resultList4 = Config.session.createQuery(hqlQuery4).getResultList();
+        resultList4.forEach(oa->{
+            System.out.println(Arrays.toString(oa));
+        });
+
+
 
 
 
