@@ -37,9 +37,10 @@ public class RunnerFetch06 {
         System.out.println("HQL");
         resultList1.forEach(oa-> System.out.println(Arrays.toString(oa)));
 
-//        Student06 student1 = session.get(Student06.class,1001);
-//        System.out.println("--GET");
-//        System.out.println(student1.getBookList());
+        //101 -> Entity -> Book06 Class
+        Book06 book06 = session.get(Book06.class,101L);
+        System.out.println("--GET");
+        System.out.println(book06.getBookName());
 
         tx.commit();
         session.close();
