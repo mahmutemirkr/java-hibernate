@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.util.List;
+
 public class RunnerSave06 {
 
     public static void main(String[] args) {
@@ -20,6 +22,10 @@ public class RunnerSave06 {
         Book06 book3 = new Book06();
         book3.setId(103L);
         book3.setBookName("Java Book");
+
+        Book06 book4 = new Book06();
+        book3.setId(104L);
+        book3.setBookName("English Book");
 
 
 
@@ -41,6 +47,12 @@ public class RunnerSave06 {
         student3.setGrade(75);
         student3.getBookList().add(book3);
 
+        Student06 student4 = new Student06();
+        student4.setId(1004L);
+        student4.setStudentNames("Jendiri");
+        student4.setBookList(104L,"Math Book");
+
+
 
         Configuration con = new Configuration().configure("hibernate.cfg.xml").
                addAnnotatedClass(Student06.class).addAnnotatedClass(Book06.class);
@@ -52,10 +64,13 @@ public class RunnerSave06 {
         session.save(book1);
         session.save(book2);
         session.save(book3);
+        session.save(book4);
 
         session.save(student1);
         session.save(student2);
         session.save(student3);
+        session.save(student4);
+
 
         tx.commit();
         session.close();

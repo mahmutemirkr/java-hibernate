@@ -5,6 +5,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class RunnerFetch06 {
 
     public static void main(String[] args) {
@@ -21,7 +24,22 @@ public class RunnerFetch06 {
         System.out.println(student);
         System.out.println(student.getStudentNames());
         System.out.println(student.getGrade());
+        System.out.println(student.getBookList());
 
+        String hqlQuery1 = "FROM Book06 b WHERE b.id=101";
+        Book06 book1 = session.createQuery(hqlQuery1, Book06.class).uniqueResult();
+        System.out.println(book1);
+
+
+        String hqlQuery2=
+                "SELECT b.id, b.bookName FROM Student06 s INNER JOIN s.bookList b WHERE s.id=1001";
+        List<Object[]> resultList1= session.createQuery(hqlQuery2).getResultList();
+        System.out.println("HQL");
+        resultList1.forEach(oa-> System.out.println(Arrays.toString(oa)));
+
+//        Student06 student1 = session.get(Student06.class,1001);
+//        System.out.println("--GET");
+//        System.out.println(student1.getBookList());
 
         tx.commit();
         session.close();

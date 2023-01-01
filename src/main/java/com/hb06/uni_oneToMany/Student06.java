@@ -50,7 +50,11 @@ public class Student06 {
         return bookList;
     }
 
-    public void setBookList(List<Book06> bookList) {
+    public void setBookList() {
+        this.bookList = bookList;
+    }
+
+    public void setBookList(Long id, String bookName) {
         this.bookList = bookList;
     }
 
