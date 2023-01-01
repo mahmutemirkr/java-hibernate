@@ -27,6 +27,7 @@ public class RunnerFetch05 {
         System.out.println("student -> getUniversity");
         System.out.println(student.getUniversity());
 
+
         // !!! HQL id : 1
         String hqlQuery = "FROM Student05 s WHERE s.university.id=1 ";
         List<Student05> resultList1 = session.createQuery(hqlQuery , Student05.class).getResultList();
