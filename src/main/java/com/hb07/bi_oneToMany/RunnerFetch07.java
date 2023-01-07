@@ -25,19 +25,13 @@ public class RunnerFetch07 {
         student.getBookList().forEach(System.out::println);
         student.getBookList().forEach(b->System.out.println(b));
 
-        //SQL
-        String sqlQuery =
-                "SELECT s.student_name,b.name FROM student07 s INNER JOIN book07 b ON s.id=b.student_id";
-        List<Object[]> resulList1 = session.createSQLQuery(sqlQuery).getResultList();
-        for (Object[] object: resulList1) {
-            System.out.println(Arrays.toString(object));
-        }
 
-
+        //HQL
         String hqlQuery =
                 "SELECT s.name,b.name FROM Student07 s INNER JOIN FETCH Book07 b ON s.id=b.student.id";
         List<Object[]> resultList2 = session.createQuery(hqlQuery).getResultList();
         resultList2.forEach(oa->System.out.println(Arrays.toString(oa)));
+
 
         tx.commit();
         session.close();

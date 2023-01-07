@@ -1,10 +1,11 @@
 package com.hb07.bi_oneToMany;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
+@Entity
 public class Book07 {
 
     @Id
@@ -13,7 +14,7 @@ public class Book07 {
     private String name;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "std_id")
     private Student07 student;
 
     public int getId() {

@@ -10,13 +10,16 @@ public class Student07 {
     @Id
     private int id;
 
-    @Column(name = "student_name",nullable = false)
+    @Column(name="student_name", nullable = false)
     private String name;
 
     private int grade;
 
-    @OneToMany(mappedBy = "student",orphanRemoval = true, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "student", orphanRemoval = true,cascade = CascadeType.REMOVE)
     private List<Book07> bookList = new ArrayList<>();
+
+    // Getter- Setter
+
 
     public int getId() {
         return id;
@@ -50,6 +53,8 @@ public class Student07 {
         this.bookList = bookList;
     }
 
+    // toString()
+
     @Override
     public String toString() {
         return "Student07{" +
@@ -59,5 +64,4 @@ public class Student07 {
                 ", bookList=" + bookList +
                 '}';
     }
-
 }
