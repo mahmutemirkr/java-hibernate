@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -39,6 +40,18 @@ public class RunnerFetch11 {
 			student.setMathGrade(50);
 			session.update(studentX);
 		}
+
+
+        //-----------------
+        int sMathGrade=80;
+        int lMathGrade=75;
+        String hqlQuery3="UPDATE Student11 s SET s.mathGrade=:sMath where s.mathGrade<:lMath";
+        Query query= session.createQuery(hqlQuery3);
+        query.setParameter("sMath", sMathGrade);
+        query.setParameter("lMath", lMathGrade);
+
+        int numOfRec2= query.executeUpdate();
+        System.out.println("Effected Row Count:"+ numOfRec2); //mathGrade<75, mathGrade fialds update = mathGrade=:80
 
 
         tx.commit();
