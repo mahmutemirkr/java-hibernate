@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
@@ -85,6 +86,32 @@ public class RunnerFetch11 {
         List<Student11> resultList4= query4.getResultList();
         resultList4.forEach(System.out::println);
 
+        System.out.println("***********************************");
+
+        //ID:1 or greaterThan -> mathGrade>75
+        Long id = 1L ;
+        Predicate predicateForId = cb.equal(root.get("id"), id);
+        Predicate predicateForMathGrade = cb.greaterThan(root.get("mathGrade"), 75);
+        Predicate predicateQuery = cb.or(predicateForId , predicateForMathGrade );
+        criteriaQuery.where(predicateQuery);
+        Query<Student11> query5 = session.createQuery(criteriaQuery);
+        List<Student11> resultList5 = query5.getResultList();
+        System.out.println("***********************************");
+        resultList5.forEach(System.out::println);
+
+        System.out.println("***********************************");
+
+
+        //Query ID:4 and mathGrade=94
+        Long id4 = 4L ;
+        Predicate predicateForId4 = cb.equal(root.get("id"), id4);
+        Predicate predicateForMathGrade4 = cb.equal(root.get("mathGrade"), 94);
+        Predicate predicateQuery4 = cb.and(predicateForId4 , predicateForMathGrade4 );
+        criteriaQuery.where(predicateQuery4);
+        Query<Student11> query6 = session.createQuery(criteriaQuery);
+        List<Student11> resultList6 = query6.getResultList();
+        System.out.println("***********************************");
+        resultList6.forEach(System.out::println);
 
 
         tx.commit();
