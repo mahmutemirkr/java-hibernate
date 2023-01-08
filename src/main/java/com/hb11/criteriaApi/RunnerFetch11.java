@@ -67,6 +67,24 @@ public class RunnerFetch11 {
         List<Student11> resultLists= query1.getResultList();
         resultLists.forEach(s->System.out.println(s));
 
+        //2-CriteriaApi
+        criteriaQuery.select(root).where(cb.equal(root.get("name"),"Student Name 6"));
+        Query<Student11> query2 = session.createQuery(criteriaQuery);
+        List<Student11> resultList2= query2.getResultList();
+        resultList2.forEach(System.out::println);
+
+        //3-CriteriaApi -> greaterThan -> mathGrade>80
+        criteriaQuery.select(root).where(cb.greaterThan(root.get("mathGrade"),80));
+        Query<Student11> query3 = session.createQuery(criteriaQuery);
+        List<Student11> resultList3= query3.getResultList();
+        resultList3.forEach(System.out::println);
+
+        //4-CriteriaApi -> lessThan -> mathGrade<95
+        criteriaQuery.select(root).where(cb.lessThan(root.get("mathGrade"),95));
+        Query<Student11> query4 = session.createQuery(criteriaQuery);
+        List<Student11> resultList4= query4.getResultList();
+        resultList4.forEach(System.out::println);
+
 
 
         tx.commit();
