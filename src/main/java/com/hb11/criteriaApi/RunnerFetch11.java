@@ -6,6 +6,9 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class RunnerFetch11 {
@@ -52,6 +55,18 @@ public class RunnerFetch11 {
 
         int numOfRec2= query.executeUpdate();
         System.out.println("Effected Row Count:"+ numOfRec2); //mathGrade<75, mathGrade fialds update = mathGrade=:80
+
+
+        //CriteriaApi -****************************
+
+        CriteriaBuilder cb= session.getCriteriaBuilder();
+        CriteriaQuery<Student11> criteriaQuery= cb.createQuery(Student11.class);
+        Root<Student11> root = criteriaQuery.from(Student11.class);
+        criteriaQuery.select(root); //Select * FROM tableName
+        Query<Student11> query1 = session.createQuery(criteriaQuery);
+        List<Student11> resultLists= query1.getResultList();
+        resultLists.forEach(s->System.out.println(s));
+
 
 
         tx.commit();
